@@ -1,0 +1,40 @@
+<h1>Page flip magazines</h1>
+
+<div id=all-brochures>
+
+	<{section name=i loop=$Brochures}>
+		
+		<div class="one-brochure">			
+			<div class="brochure-brochure_imgurl">
+			 <a href="<{$xoops_url}>/modules/pageflip/page-flip.php?brochure_id=<{$Brochures[i].brochure_id}>"> <img src="<{$xoops_url}>/uploads/pageflip/covers/<{$Brochures[i].brochure_imgurl}>" alt="Cover image - <{$Brochures[i].brochure_title}>"/></a>
+			</div>			  
+			<div class="desc-box">	 
+			  	<div class="header">
+					<div class="brochure-title">
+					  <h2><a href="<{$xoops_url}>/modules/pageflip/page-flip.php?brochure_id=<{$Brochures[i].brochure_id}>"><{$Brochures[i].brochure_title}></a> </h2>				  		
+					</div>											
+					
+					<{if in_array(1,$xoops_usergroups)}>
+						<div class="edit"><a href="<{$xoops_url}>/modules/pageflip/admin/index.php?op=brochuresmanager&brochure_id=<{$Brochures[i].brochure_id}>">Edit</a> </div>
+					<{/if}>
+				</div>
+				<div class="brochure-description">
+				  <{$Brochures[i].brochure_description}>
+				</div>			
+				<a href="<{$xoops_url}>/modules/pageflip/page-flip.php?brochure_id=<{$Brochures[i].brochure_id}>"> View magazine</a>  		
+
+				<div class="brochure-get-code">	
+					<br/>   
+					<div class="copy_help">Copy and paste the HTML code from below and embed this magazine anywhere on the web. </div>			
+
+				  		<textarea name="ta_getcode_<{$Brochures[i].brochure_id}>"><iframe src ="<{$xoops_url}>/uploads/pageflip/binder/<{$Brochures[i].brochure_id}>" width="100%" height="<{$Brochures[i].brochure_pagewidth+200}>px"><p>Your browser does not support iframes.</p></iframe></textarea>	  
+
+					<br/>
+				    <{if $Brochures[i].pdflist!=""}> <b>PDF format: </b><{$Brochures[i].pdflist}> <{/if}>
+				</div>	
+			</div>
+		</div>
+		 <div style="clear:left;"> </div>
+	<{/section}>
+<div class="footer">Navigation |  <{$pagenav}></div>
+</div>
